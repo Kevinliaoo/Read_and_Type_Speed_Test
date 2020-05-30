@@ -15,15 +15,22 @@ class Tiping:
 		self.width = 800 
 		self.height = 600
 		self.win = win
+		#Starting time
 		self.time = time.time()
+		#End time (configurado una vez terminado)
 		self.tiempoFin = 0
+		#Palabras que van a ir apareciendo
 		self.words = []
 		self.wordSize = 20
 		#Lo llamo wordsTyped, pero en realidad cuenta la cantidad de letras, no palabras.
 		self.wordsTyped = 0
+		#La palabra que el usuario está tipiando
 		self.currentTypingWord = None
+		#Cantidad de letras tipeadas de currentTypingWord
 		self.letrasTipeadasDeEstaPalabra = 0
+		#El´índice del String de la letra tipeando
 		self.currentTypingWordIndex = 0
+		#Verdadero si el usuario está tipeando una palabra
 		self.typingWord = False 
 		
 	def run(self):
@@ -180,17 +187,17 @@ class Tiping:
 		"""
 		self.win.fill([0,0,0])
 
-		endtime = timer_font.render("Total time: "+str(self.tiempoFin)+" sec.", 1, (255,255,255))
-		self.win.blit(endtime, (0, 0))
+		endtime = timer_font.render("Total time: "+str(self.tiempoFin)+" secs.", 1, (255,255,255))
+		self.win.blit(endtime, (40, 0))
 
 		cantWords = timer_font.render("Letters typed: "+str(self.wordsTyped), 1, (255,255,255))
-		self.win.blit(cantWords, (0, 50))
+		self.win.blit(cantWords, (40, 50))
 
 		wpm = timer_font.render("Letters per minute: "+str((self.wordsTyped*60)/self.tiempoFin), 1, (255,255,255))
-		self.win.blit(wpm, (0, 100))
+		self.win.blit(wpm, (40, 100))
 
-		end = timer_font.render("Press enter to end", 1, (255,255,255))
-		self.win.blit(end, (0, 150))
+		end = timer_font.render("Press enter to end", 1, (255,0,0))
+		self.win.blit(end, (40, 150))
 
 		pygame.display.update()
 
@@ -221,6 +228,9 @@ class Word:
 		self.x -= self.vel
 
 	def isTyping (self): 
+		"""
+		Sets the word color to green when user is typing this word.
+		"""
 		self.color = (0,255,0)
 
 	def draw (self): 
