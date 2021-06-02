@@ -5,5 +5,5 @@ idna==2.9
 pygame==1.9.6
 requests==2.23.0
 soupsieve==2.0.1
-urllib3==1.25.9
+urllib3==1.26.5
 wikipedia==1.4.0
